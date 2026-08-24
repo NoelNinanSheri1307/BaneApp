@@ -1,38 +1,434 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Bane">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>Bane — Biotech Arbitrage Engine | Computational Drug Repurposing Intelligence</title>
+  <meta name="description"
+    content="Bane is an editorial, traceable computational drug repurposing platform connecting real-time biomedical literature retrieval with fine-tuned Transformer NLP knowledge graphs.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png">
 
-  <title>Bane</title>
-  <link rel="manifest" href="manifest.json">
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Background Biological Particle Canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- =========================================================================
+       SITE HEADER
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-wrapper" aria-label="Bane Home">
+        <span class="brand-wordmark">BANE</span>
+        <span class="brand-tag">BIOTECH ARBITRAGE ENGINE</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#narrative" class="nav-link">Rationale</a>
+        <a href="#pathfinder" class="nav-link">Pathfinder</a>
+        <a href="#showcase" class="nav-link">App Interface</a>
+        <a href="#capabilities" class="nav-link">Capabilities</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-accent btn-trigger-demo" type="button" aria-haspopup="dialog">
+          <span>Demo Environment</span>
+        </button>
+        <a href="https://github.com/NoelNinanSheri1307/BaneApp" target="_blank" rel="noopener noreferrer"
+          class="btn btn-ghost" aria-label="GitHub Repository">
+          <span>GitHub ↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         SECTION 1: HERO (100dvh)
+         ========================================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge-strip">
+              <span class="status-pill">
+                <span class="pulse-dot"></span>
+                <span>EUROPE PMC INGESTION ENGINE</span>
+              </span>
+              <span class="status-pill">
+                <span>PYTORCH TRANSFORMER PIPELINE</span>
+              </span>
+            </div>
+
+            <span class="section-label">INVESTIGATIONAL BIOMEDICAL INTELLIGENCE</span>
+
+            <h1 class="editorial-headline">
+              Literature is vast. Connections are invisible. We illuminate <em>repurposing pathways</em>.
+            </h1>
+
+            <p class="editorial-subhead">
+              Bane mines peer-reviewed medical publications to construct traceable, multi-hop knowledge graphs.
+              Extracting direct mechanism-of-action chains from published papers—preserving opposing trials without
+              generative hallucinations.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#showcase" class="btn btn-primary">
+                <span>Explore App Interface ➔</span>
+              </a>
+              <button class="btn btn-accent btn-trigger-demo" type="button">
+                <span>Demo Environment &amp; Repo</span>
+              </button>
+              <a href="https://github.com/NoelNinanSheri1307/BaneApp" target="_blank" rel="noopener noreferrer"
+                class="btn btn-ghost">
+                <span>Source Repository ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero System Telemetry Box -->
+          <div class="hero-telemetry-box" aria-label="System Specifications">
+            <div class="telemetry-row">
+              <span class="telemetry-label">Architecture</span>
+              <span class="telemetry-value">FastAPI + Flutter Client</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">NER Model</span>
+              <span class="telemetry-value accent">Bio-NER Token Classifier</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">Relation Extraction</span>
+              <span class="telemetry-value accent">Glasgow-AI4BioMed Model</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">Evidence Provenance</span>
+              <span class="telemetry-value sage">Sentence-Level PMIDs &amp; DOIs</span>
+            </div>
+            <div class="telemetry-row">
+              <span class="telemetry-label">Design System</span>
+              <span class="telemetry-value">Warm Ivory &amp; Deep Obsidian</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: THE PROBLEM (FRAGMENTATION DILEMMA)
+         ========================================================================= -->
+    <section id="narrative">
+      <div class="container">
+        <span class="section-label">01 / THE FRAGMENTATION DILEMMA</span>
+        <h2 class="editorial-headline">
+          Billions spent discovering new molecules. Decades of clinical signals left <em>unconnected</em>.
+        </h2>
+        <p class="editorial-subhead">
+          Modern biomedical research is siloed across millions of isolated abstracts. Significant computational
+          repurposing signals are already documented in published trials, waiting for structural synthesis.
+        </p>
+
+        <div class="problem-grid">
+          <div class="narrative-card">
+            <div class="narrative-num">PHASE I — THE INFORMATION CHASM</div>
+            <h3 class="narrative-title">Unstructured text traps 85% of biological linkages.</h3>
+            <p class="narrative-body">
+              Standard keyword queries on PubMed return long bibliographies without resolving causal pharmacological
+              links. Researchers are forced to manually correlate drug affinities with distant pathway mutations.
+            </p>
+          </div>
+
+          <div class="narrative-card">
+            <div class="narrative-num">PHASE II — THE HALLUCINATION RISK</div>
+            <h3 class="narrative-title">Generic LLMs collapse nuance and suppress negative trials.</h3>
+            <p class="narrative-body">
+              Generative chat tools summarize research by smoothing over contradictions. In translational medicine,
+              limiting trials and negative toxicity markers are as vital as positive efficacy claims.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: SIGNATURE BIOLOGICAL PATHFINDER (INTERACTIVE SIMULATOR)
+         ========================================================================= -->
+    <section id="pathfinder">
+      <div class="container">
+        <span class="section-label">02 / SIGNATURE PATHFINDING ALGORITHM</span>
+        <h2 class="editorial-headline">
+          Tracing multi-step biological linkages from <em>Molecule to Indication</em>.
+        </h2>
+        <p class="editorial-subhead">
+          Our knowledge graph engine performs algorithmic multi-hop pathfinding: Drug ($A$) ➔ Target ($T$) ➔ Pathway
+          ($P$) ➔ Disease ($D$), verifying every hop with sentence-level citation scores.
+        </p>
+
+        <div class="pathfinder-workbench">
+          <!-- Hypothesis Selector -->
+          <div class="hypothesis-selector">
+            <span class="selector-label">SELECT VALIDATED CASE:</span>
+            <button class="hypothesis-btn active" data-hypothesis="propranolol" type="button">Propranolol in
+              Hemangioma</button>
+            <button class="hypothesis-btn" data-hypothesis="metformin" type="button">Metformin in Oncology</button>
+            <button class="hypothesis-btn" data-hypothesis="thalidomide" type="button">Thalidomide in Myeloma</button>
+            <button class="hypothesis-btn" data-hypothesis="imatinib" type="button">Imatinib in Fibrogenesis</button>
+          </div>
+
+          <!-- Live Dynamic Chain -->
+          <div class="path-chain-container">
+            <div class="path-node active">
+              <div class="node-step-tag">STEP 01 / MOLECULE</div>
+              <div class="node-entity-name" id="node-1-name">Propranolol</div>
+              <div class="node-entity-type" id="node-1-type">Chemical / Non-selective Beta Blocker</div>
+            </div>
+
+            <div class="path-arrow">
+              <span>INHIBITS</span>
+              <div class="path-arrow-line"></div>
+            </div>
+
+            <div class="path-node active">
+              <div class="node-step-tag">STEP 02 / TARGET</div>
+              <div class="node-entity-name" id="node-2-name">ADRB2 &amp; VEGF</div>
+              <div class="node-entity-type" id="node-2-type">Target / Adrenergic &amp; Angiogenesis</div>
+            </div>
+
+            <div class="path-arrow">
+              <span>MODULATES</span>
+              <div class="path-arrow-line"></div>
+            </div>
+
+            <div class="path-node active">
+              <div class="node-step-tag">STEP 03 / PATHWAY</div>
+              <div class="node-entity-name" id="node-3-name">Endothelial Apoptosis</div>
+              <div class="node-entity-type" id="node-3-type">Biological Pathway</div>
+            </div>
+
+            <div class="path-arrow">
+              <span>REVERSES</span>
+              <div class="path-arrow-line"></div>
+            </div>
+
+            <div class="path-node active">
+              <div class="node-step-tag">STEP 04 / INDICATION</div>
+              <div class="node-entity-name" id="node-4-name">Infantile Hemangioma</div>
+              <div class="node-entity-type" id="node-4-type">Target Disease Indication</div>
+            </div>
+          </div>
+
+          <!-- Claim & Metric Box -->
+          <div class="pathfinder-detail-box">
+            <div>
+              <div class="detail-claim-title">SYNTHESIZED MECHANISTIC HYPOTHESIS</div>
+              <p class="detail-claim-text" id="path-claim-text">
+                Inhibition of beta-2 adrenergic receptors downregulates VEGF/bFGF expression, inducing vasoconstriction
+                and endothelial cell apoptosis in proliferating hemangiomas.
+              </p>
+            </div>
+            <div class="detail-metric-badge">
+              <span class="detail-metric-val" id="path-metric-val">0.94</span>
+              <span class="detail-metric-lbl">Prioritization Score</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: MOBILE APPLICATION SHOWCASE (CLEAN PHONE FRAME)
+         ========================================================================= -->
+    <section id="showcase">
+      <div class="container">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto;">
+          <span class="section-label">03 / APPLICATION INTERFACE</span>
+          <h2 class="editorial-headline">
+            The Researcher's <em>Mobile Workbench</em>
+          </h2>
+          <p class="editorial-subhead" style="margin: 0 auto;">
+            Explore the Bane client application interface. Navigate through the screens below using the arrow controls.
+          </p>
+        </div>
+
+        <div class="showcase-wrapper">
+          <div class="phone-mockup-container">
+            <div class="phone-device" aria-label="Bane Mobile Phone Screen">
+              <!-- Physical Hardware Side Buttons -->
+              <div class="phone-hw-btn phone-hw-vol-up" aria-hidden="true"></div>
+              <div class="phone-hw-btn phone-hw-vol-down" aria-hidden="true"></div>
+              <div class="phone-hw-btn phone-hw-power" aria-hidden="true"></div>
+
+              <!-- Top Bezel Speaker & Lens -->
+              <div class="phone-top-bar" aria-hidden="true">
+                <div class="phone-speaker"></div>
+                <div class="phone-camera-lens"></div>
+              </div>
+
+              <!-- Phone Display Screen -->
+              <div class="phone-screen">
+                <div class="phone-glass-glare" aria-hidden="true"></div>
+                <img id="showcase-img" class="phone-screenshot-img" src="proof/Bane (1).png"
+                  alt="Bane Mobile Application Screen" />
+                <div class="phone-home-indicator" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Left / Right Arrow Navigation below Phone -->
+            <div class="phone-nav-controls">
+              <button class="carousel-btn" id="carousel-prev" aria-label="Previous Screenshot"
+                title="Previous Screen">←</button>
+              <div class="screen-counter" id="screen-counter">01 / 15</div>
+              <button class="carousel-btn" id="carousel-next" aria-label="Next Screenshot"
+                title="Next Screen">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: CORE CAPABILITIES MATRIX
+         ========================================================================= -->
+    <section id="capabilities">
+      <div class="container">
+        <span class="section-label">04 / SYSTEM CAPABILITIES</span>
+        <h2 class="editorial-headline">
+          Full-stack computational intelligence, from <em>abstract to candidate dossier</em>.
+        </h2>
+
+        <div class="capabilities-grid">
+          <div class="capability-item">
+            <div class="capability-icon">[01]</div>
+            <h3 class="capability-title">Europe PMC REST Ingestion</h3>
+            <p class="capability-desc">Automated retrieval with query expansion, keyword relevancy filters, and
+              deduplication across millions of peer-reviewed articles.</p>
+          </div>
+
+          <div class="capability-item">
+            <div class="capability-icon">[02]</div>
+            <h3 class="capability-title">Dual Transformer Models</h3>
+            <p class="capability-desc">Fine-tuned Named Entity Recognition (NER) paired with token-level relation
+              extraction classifying directional biological verbs.</p>
+          </div>
+
+          <div class="capability-item">
+            <div class="capability-icon">[03]</div>
+            <h3 class="capability-title">NetworkX Graph Topology</h3>
+            <p class="capability-desc">Constructs interactive multi-hop knowledge graphs exported to PyVis HTML for
+              webview inspection and topological analysis.</p>
+          </div>
+
+          <div class="capability-item">
+            <div class="capability-icon">[04]</div>
+            <h3 class="capability-title">Scored Signals Workbench</h3>
+            <p class="capability-desc">Ranks candidate repurposing opportunities via composite confidence scoring,
+              separating statistical priority from clinical proof.</p>
+          </div>
+
+          <div class="capability-item">
+            <div class="capability-icon">[05]</div>
+            <h3 class="capability-title">Active Literature Surveillance</h3>
+            <p class="capability-desc">Real-time alert feeds that monitor emerging publications for target mutations,
+              clinical trials, and newly extracted candidate signals.</p>
+          </div>
+
+          <div class="capability-item">
+            <div class="capability-icon">[06]</div>
+            <h3 class="capability-title">Cross-Platform Flutter Client</h3>
+            <p class="capability-desc">Warm Ivory scientific design system running natively at 60fps across iOS,
+              Android, Windows Desktop, macOS, and Web.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-wordmark">BANE</span>
+        <span class="footer-tagline">Biotech Arbitrage Engine • Computational Drug Repurposing Discovery</span>
+      </div>
+
+      <div class="footer-actions">
+        <a href="https://github.com/NoelNinanSheri1307/BaneApp" target="_blank" rel="noopener noreferrer"
+          class="btn btn-ghost">
+          <span>GitHub: BaneApp ↗</span>
+        </a>
+        <button class="btn btn-accent btn-trigger-demo" type="button">
+          <span>Local Deployment</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL: DEMO ENVIRONMENT & LOCAL REPO EXECUTION
+       ========================================================================= -->
+  <div class="modal-backdrop" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Dialog">✕</button>
+
+      <div class="modal-header">
+        <span class="section-label">LOCAL EXECUTION &amp; REPOSITORY ACCESS</span>
+        <h2 class="editorial-headline" id="modal-title" style="font-size: 1.85rem; margin-bottom: 0.5rem;">
+          Running the Full Engine Locally
+        </h2>
+      </div>
+
+      <div class="modal-info-box">
+        <div class="modal-info-title">RESEARCH ENVIRONMENT ARCHITECTURE</div>
+        <p class="modal-info-body">
+          Bane utilizes local, high-capacity Transformer NLP models and dynamic graph pathfinding pipelines. To provide
+          complete research privacy, unrestricted compute access, and full customization without cloud tier constraints,
+          the complete platform is structured for direct local and on-premise execution from the repository.
+        </p>
+      </div>
+
+      <h3 style="font-family: var(--font-sans); font-size: 1.05rem; color: var(--color-ivory); margin-bottom: 0.5rem;">
+        Quick Start Instructions
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--color-ivory-secondary); margin-bottom: 0.75rem;">
+        Clone the repository and launch both the Python FastAPI engine and the Flutter client:
+      </p>
+
+      <div class="code-block">
+        # 1. Start the Python FastAPI Engine
+        cd drug_repurposing_engine
+        python -m venv venv
+        source venv/bin/activate # Or .\venv\Scripts\activate on Windows
+        pip install -r requirements.txt
+        uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+        # 2. Start the Flutter Client Application
+        flutter pub get
+        flutter run -d chrome # Or windows / android / ios
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Script -->
+  <script src="app.js"></script>
 </body>
+
 </html>
