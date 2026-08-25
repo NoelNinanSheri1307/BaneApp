@@ -1,7 +1,10 @@
-/* ==========================================================================
-   BANE (BIOTECH ARBITRAGE ENGINE) — DESIGN SYSTEM & TOKENS
-   Editorial, Scientific, Restrained Motion & Warm Ivory Aesthetic
-   ========================================================================== */
+@font-face {
+  font-family: 'Footlight MT Pro';
+  src: url('fonts/FootlightMTProLight.otf') format('opentype');
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* Color Tokens */
@@ -28,7 +31,7 @@
   
   /* Typography */
   --font-display: 'Instrument Serif', 'Newsreader', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Footlight MT Pro', 'Footlight MT Light', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, Georgia, serif;
   --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
   
   /* Spacing Scale */
@@ -631,6 +634,68 @@ section {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-ivory-secondary);
+  margin-bottom: 1.25rem;
+}
+
+/* 4-Factor Composite Signal Score Breakdown */
+.score-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.factor-item {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.factor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.factor-name {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-ivory);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.factor-weight {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-amber);
+  font-weight: 600;
+}
+
+.factor-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--color-bg-surface);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.factor-bar-fill {
+  height: 100%;
+  background: var(--color-amber);
+  border-radius: 2px;
+}
+
+.factor-desc {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-ivory-muted);
+  line-height: 1.35;
 }
 
 .detail-metric-badge {
@@ -644,14 +709,16 @@ section {
 
 .detail-metric-val {
   font-family: var(--font-mono);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--color-sage);
+  line-height: 1;
+  margin-bottom: 0.25rem;
 }
 
 .detail-metric-lbl {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   letter-spacing: 0.1em;
   color: var(--color-ivory-muted);
   text-transform: uppercase;

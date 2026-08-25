@@ -1,6 +1,6 @@
 /**
  * BANE (Biotech Arbitrage Engine) — Web Application Logic
- * Interactive Canvas, Simple Phone Showcase Carousel, Pathfinder Simulator, Diagnostics Modal
+ * Interactive Canvas, Smartphone Showcase Carousel, Swanson ABC Simulator, Diagnostics Modal
  */
 
 (function () {
@@ -28,42 +28,67 @@
     'proof/Bane (15).png'
   ];
 
-  const HYPOTHESES = {
-    propranolol: {
-      step1: { name: 'Propranolol', type: 'Chemical / Non-selective Beta Blocker' },
-      step2: { name: 'ADRB2 & VEGF', type: 'Target / Adrenergic & Angiogenesis' },
-      step3: { name: 'Endothelial Apoptosis', type: 'Biological Pathway' },
-      step4: { name: 'Infantile Hemangioma', type: 'Target Disease Indication' },
-      claim: 'Inhibition of beta-2 adrenergic receptors downregulates VEGF/bFGF expression, inducing vasoconstriction and endothelial cell apoptosis in proliferating hemangiomas.',
-      metric: '0.94',
-      metricLabel: 'Prioritization Score'
+  // Swanson ABC Repurposing Model & Signal Score Breakdown Data
+  const SWANSON_MODELS = {
+    indirect_abc: {
+      step1: { name: 'Node A: Existing Drug', type: 'Approved Molecule / Chemical Entity' },
+      step2: { name: 'Node B: Biological Target', type: 'Gene / Protein / Enzyme Bridge' },
+      step3: { name: 'Node C: Target Disease', type: 'Secondary Disease Indication' },
+      step4: { name: 'Repurposing Signal (A → C)', type: 'Transitive Hypothesis Dossier' },
+      arrow1: 'INHIBITS / MODULATES',
+      arrow2: 'CAUSES / DRIVES',
+      arrow3: 'EMERGENT LINK',
+      claim: "Swanson's A → B → C Model: If Drug A modulates Target B, and Target B is a causal driver in Disease C, an indirect repurposing signal (A → C) is inferred and scored across literature citations.",
+      signalScore: '89',
+      mechVal: '92%',
+      clinVal: '86%',
+      litVal: '85%',
+      novVal: '94%'
     },
-    metformin: {
-      step1: { name: 'Metformin', type: 'Chemical / Biguanide' },
-      step2: { name: 'AMPK / Complex I', type: 'Target / Mitochondrial Metabolism' },
-      step3: { name: 'mTORC1 Inhibition', type: 'Cellular Growth Pathway' },
-      step4: { name: 'Endometrial Carcinoma', type: 'Target Disease Indication' },
-      claim: 'Activation of AMPK by mitochondrial complex I restriction suppresses mTOR signaling, inhibiting tumor cell proliferation and sensitizing insulin-resistant tissue.',
-      metric: '0.88',
-      metricLabel: 'Prioritization Score'
+    direct_baseline: {
+      step1: { name: 'Node A: Existing Drug', type: 'Known Pharmaceutical Compound' },
+      step2: { name: 'Published Literature Corpus', type: 'Europe PMC / PubMed Index' },
+      step3: { name: 'Primary Indication C', type: 'Established Therapeutic Use' },
+      step4: { name: 'Baseline Control Profile', type: 'Direct Association Benchmark' },
+      arrow1: 'INDEXED IN',
+      arrow2: 'REPORTED FOR',
+      arrow3: 'BENCHMARKED',
+      claim: 'Direct Literature Baseline: Evaluates well-established primary indications to benchmark novel candidate signals and isolate genuine secondary repurposing opportunities from prior art.',
+      signalScore: '74',
+      mechVal: '88%',
+      clinVal: '90%',
+      litVal: '92%',
+      novVal: '25%'
     },
-    thalidomide: {
-      step1: { name: 'Thalidomide', type: 'Chemical / Immunomodulatory Drug' },
-      step2: { name: 'Cereblon (CRBN)', type: 'Target / E3 Ubiquitin Ligase' },
-      step3: { name: 'IKZF1 / IKZF3 Degradation', type: 'Transcription Factor Pathway' },
-      step4: { name: 'Multiple Myeloma', type: 'Target Disease Indication' },
-      claim: 'Binding to CRBN recruits Ikaros and Aiolos for proteasomal degradation, arresting multiple myeloma cell cycle and modulating cytokine production.',
-      metric: '0.96',
-      metricLabel: 'Prioritization Score'
+    shared_cascade: {
+      step1: { name: 'Node A: Multi-Target Drug', type: 'Kinase / Small Molecule Inhibitor' },
+      step2: { name: 'Upstream Target B1', type: 'Cell Surface Receptor / Kinase' },
+      step3: { name: 'Pathway Node B2', type: 'Downstream Signaling Cascade' },
+      step4: { name: 'Complex Indication C', type: 'Multi-Step Pathway Repurposing' },
+      arrow1: 'BINDS TO',
+      arrow2: 'SIGNAL CASCADE',
+      arrow3: 'MODULATES',
+      claim: 'Multi-Hop Pathway Cascades: Resolves multi-protein biological cascades where initial target inhibition propagates downstream to reverse pathological disease mechanisms.',
+      signalScore: '83',
+      mechVal: '85%',
+      clinVal: '80%',
+      litVal: '81%',
+      novVal: '88%'
     },
-    imatinib: {
-      step1: { name: 'Imatinib', type: 'Chemical / Tyrosine Kinase Inhibitor' },
-      step2: { name: 'PDGFR-β & c-KIT', type: 'Target / Kinase Cascade' },
-      step3: { name: 'Fibroblast Proliferation', type: 'Fibrogenesis Pathway' },
-      step4: { name: 'Systemic Sclerosis', type: 'Target Disease Indication' },
-      claim: 'Dual inhibition of TGF-beta downstream kinases and PDGF receptor phosphorylation attenuates excessive extracellular matrix deposition and myofibroblast activation.',
-      metric: '0.82',
-      metricLabel: 'Prioritization Score'
+    target_reversal: {
+      step1: { name: 'Node A: Target Antagonist', type: 'Competitive / Allosteric Inhibitor' },
+      step2: { name: 'Overexpressed Target B', type: 'Oncogenic / Inflammatory Protein' },
+      step3: { name: 'Pathological Phenotype', type: 'Hyperactive Disease Pathway' },
+      step4: { name: 'High-Impact Candidate', type: 'Target-Reversal Repurposing' },
+      arrow1: 'DOWNREGULATES',
+      arrow2: 'PATHOLOGY DRIVER',
+      arrow3: 'REVERSAL SIGNAL',
+      claim: 'Phenotypic Target Reversal: Identifies drugs capable of downregulating proteins that are abnormally overexpressed or hyperactive in disease tissues.',
+      signalScore: '93',
+      mechVal: '96%',
+      clinVal: '91%',
+      litVal: '89%',
+      novVal: '95%'
     }
   };
 
@@ -158,7 +183,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. MOBILE SCREENSHOT SHOWCASE CAROUSEL (CLEAN PHONE FRAME WITH ARROWS)
+  // 3. MOBILE SCREENSHOT SHOWCASE CAROUSEL (SMARTPHONE FRAME WITH ARROWS)
   // --------------------------------------------------------------------------
 
   function initScreenshotCarousel() {
@@ -218,7 +243,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 4. INTERACTIVE PATHFINDER SIMULATOR
+  // 4. SWANSON ABC MODEL & SIGNAL SCORE SIMULATOR
   // --------------------------------------------------------------------------
 
   function initPathfinderSimulator() {
@@ -231,8 +256,16 @@
     const node3Type = document.getElementById('node-3-type');
     const node4Name = document.getElementById('node-4-name');
     const node4Type = document.getElementById('node-4-type');
+    const arrow1Text = document.getElementById('arrow-1-text');
+    const arrow2Text = document.getElementById('arrow-2-text');
+    const arrow3Text = document.getElementById('arrow-3-text');
     const claimText = document.getElementById('path-claim-text');
     const metricVal = document.getElementById('path-metric-val');
+
+    const barMech = document.getElementById('bar-mech');
+    const barClin = document.getElementById('bar-clin');
+    const barLit = document.getElementById('bar-lit');
+    const barNov = document.getElementById('bar-nov');
 
     if (!buttons.length) return;
 
@@ -241,8 +274,8 @@
         buttons.forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
 
-        const key = btn.getAttribute('data-hypothesis');
-        const data = HYPOTHESES[key] || HYPOTHESES.propranolol;
+        const key = btn.getAttribute('data-model');
+        const data = SWANSON_MODELS[key] || SWANSON_MODELS.indirect_abc;
 
         if (node1Name) node1Name.textContent = data.step1.name;
         if (node1Type) node1Type.textContent = data.step1.type;
@@ -252,8 +285,18 @@
         if (node3Type) node3Type.textContent = data.step3.type;
         if (node4Name) node4Name.textContent = data.step4.name;
         if (node4Type) node4Type.textContent = data.step4.type;
+
+        if (arrow1Text) arrow1Text.textContent = data.arrow1;
+        if (arrow2Text) arrow2Text.textContent = data.arrow2;
+        if (arrow3Text) arrow3Text.textContent = data.arrow3;
+
         if (claimText) claimText.textContent = data.claim;
-        if (metricVal) metricVal.textContent = data.metric;
+        if (metricVal) metricVal.textContent = data.signalScore;
+
+        if (barMech) barMech.style.width = data.mechVal;
+        if (barClin) barClin.style.width = data.clinVal;
+        if (barLit) barLit.style.width = data.litVal;
+        if (barNov) barNov.style.width = data.novVal;
       });
     });
   }

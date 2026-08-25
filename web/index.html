@@ -122,10 +122,6 @@
               <span class="telemetry-label">Evidence Provenance</span>
               <span class="telemetry-value sage">Sentence-Level PMIDs &amp; DOIs</span>
             </div>
-            <div class="telemetry-row">
-              <span class="telemetry-label">Design System</span>
-              <span class="telemetry-value">Warm Ivory &amp; Deep Obsidian</span>
-            </div>
           </div>
         </div>
       </div>
@@ -168,84 +164,129 @@
     </section>
 
     <!-- =========================================================================
-         SECTION 3: SIGNATURE BIOLOGICAL PATHFINDER (INTERACTIVE SIMULATOR)
+         SECTION 3: SWANSON ABC REPURPOSING MODEL (TRANSITIVE PATHFINDER)
          ========================================================================= -->
     <section id="pathfinder">
       <div class="container">
-        <span class="section-label">02 / SIGNATURE PATHFINDING ALGORITHM</span>
+        <span class="section-label">02 / SWANSON ABC REPURPOSING MODEL</span>
         <h2 class="editorial-headline">
-          Tracing multi-step biological linkages from <em>Molecule to Indication</em>.
+          Discovering repurposing opportunities through <em>Swanson's ABC Model</em>.
         </h2>
         <p class="editorial-subhead">
-          Our knowledge graph engine performs algorithmic multi-hop pathfinding: Drug ($A$) ➔ Target ($T$) ➔ Pathway
-          ($P$) ➔ Disease ($D$), verifying every hop with sentence-level citation scores.
+          Bane mines literature for approved drugs and their biological targets. By establishing transitive graph linkages ($A \rightarrow B \rightarrow C$), we surface high-impact secondary repurposing opportunities without speculative guesswork.
         </p>
 
         <div class="pathfinder-workbench">
-          <!-- Hypothesis Selector -->
+          <!-- Swanson Model Selector -->
           <div class="hypothesis-selector">
-            <span class="selector-label">SELECT VALIDATED CASE:</span>
-            <button class="hypothesis-btn active" data-hypothesis="propranolol" type="button">Propranolol in
-              Hemangioma</button>
-            <button class="hypothesis-btn" data-hypothesis="metformin" type="button">Metformin in Oncology</button>
-            <button class="hypothesis-btn" data-hypothesis="thalidomide" type="button">Thalidomide in Myeloma</button>
-            <button class="hypothesis-btn" data-hypothesis="imatinib" type="button">Imatinib in Fibrogenesis</button>
+            <span class="selector-label">REPURPOSING METHODOLOGY:</span>
+            <button class="hypothesis-btn active" data-model="indirect_abc" type="button">Transitive Traversal (A → B → C)</button>
+            <button class="hypothesis-btn" data-model="direct_baseline" type="button">Direct Baseline (A → C)</button>
+            <button class="hypothesis-btn" data-model="shared_cascade" type="button">Multi-Hop Pathway Cascades</button>
+            <button class="hypothesis-btn" data-model="target_reversal" type="button">Phenotypic Target Reversal</button>
           </div>
 
           <!-- Live Dynamic Chain -->
           <div class="path-chain-container">
             <div class="path-node active">
-              <div class="node-step-tag">STEP 01 / MOLECULE</div>
-              <div class="node-entity-name" id="node-1-name">Propranolol</div>
-              <div class="node-entity-type" id="node-1-type">Chemical / Non-selective Beta Blocker</div>
+              <div class="node-step-tag">STEP 01 / APPROVED DRUG</div>
+              <div class="node-entity-name" id="node-1-name">Node A: Existing Drug</div>
+              <div class="node-entity-type" id="node-1-type">Approved Molecule / Chemical Entity</div>
             </div>
 
             <div class="path-arrow">
-              <span>INHIBITS</span>
+              <span id="arrow-1-text">INHIBITS / MODULATES</span>
               <div class="path-arrow-line"></div>
             </div>
 
             <div class="path-node active">
-              <div class="node-step-tag">STEP 02 / TARGET</div>
-              <div class="node-entity-name" id="node-2-name">ADRB2 &amp; VEGF</div>
-              <div class="node-entity-type" id="node-2-type">Target / Adrenergic &amp; Angiogenesis</div>
+              <div class="node-step-tag">STEP 02 / BIOLOGICAL TARGET</div>
+              <div class="node-entity-name" id="node-2-name">Node B: Biological Target</div>
+              <div class="node-entity-type" id="node-2-type">Gene / Protein / Enzyme Bridge</div>
             </div>
 
             <div class="path-arrow">
-              <span>MODULATES</span>
+              <span id="arrow-2-text">CAUSES / DRIVES</span>
               <div class="path-arrow-line"></div>
             </div>
 
             <div class="path-node active">
-              <div class="node-step-tag">STEP 03 / PATHWAY</div>
-              <div class="node-entity-name" id="node-3-name">Endothelial Apoptosis</div>
-              <div class="node-entity-type" id="node-3-type">Biological Pathway</div>
+              <div class="node-step-tag">STEP 03 / SECONDARY INDICATION</div>
+              <div class="node-entity-name" id="node-3-name">Node C: Target Disease</div>
+              <div class="node-entity-type" id="node-3-type">Secondary Disease Indication</div>
             </div>
 
             <div class="path-arrow">
-              <span>REVERSES</span>
+              <span id="arrow-3-text">EMERGENT LINK</span>
               <div class="path-arrow-line"></div>
             </div>
 
             <div class="path-node active">
-              <div class="node-step-tag">STEP 04 / INDICATION</div>
-              <div class="node-entity-name" id="node-4-name">Infantile Hemangioma</div>
-              <div class="node-entity-type" id="node-4-type">Target Disease Indication</div>
+              <div class="node-step-tag">STEP 04 / CANDIDATE SIGNAL</div>
+              <div class="node-entity-name" id="node-4-name">Repurposing Signal (A → C)</div>
+              <div class="node-entity-type" id="node-4-type">Transitive Hypothesis Dossier</div>
             </div>
           </div>
 
-          <!-- Claim & Metric Box -->
+          <!-- Claim & 4-Factor Signal Score Calculation Box -->
           <div class="pathfinder-detail-box">
             <div>
-              <div class="detail-claim-title">SYNTHESIZED MECHANISTIC HYPOTHESIS</div>
+              <div class="detail-claim-title">COMPOSITE SIGNAL SCORE CALCULATION</div>
               <p class="detail-claim-text" id="path-claim-text">
-                Inhibition of beta-2 adrenergic receptors downregulates VEGF/bFGF expression, inducing vasoconstriction
-                and endothelial cell apoptosis in proliferating hemangiomas.
+                Swanson's A → B → C Model: If Drug A modulates Target B, and Target B is a causal driver in Disease C, an indirect repurposing signal (A → C) is inferred and scored across literature citations.
               </p>
+
+              <!-- 4 Weighted Components -->
+              <div class="score-factors-grid">
+                <div class="factor-item">
+                  <div class="factor-header">
+                    <span class="factor-name">Mechanistic</span>
+                    <span class="factor-weight">35%</span>
+                  </div>
+                  <div class="factor-bar">
+                    <div class="factor-bar-fill" id="bar-mech" style="width: 92%;"></div>
+                  </div>
+                  <span class="factor-desc">Target-binding traversal confidence</span>
+                </div>
+
+                <div class="factor-item">
+                  <div class="factor-header">
+                    <span class="factor-name">Clinical</span>
+                    <span class="factor-weight">25%</span>
+                  </div>
+                  <div class="factor-bar">
+                    <div class="factor-bar-fill" id="bar-clin" style="width: 86%;"></div>
+                  </div>
+                  <span class="factor-desc">Disease causality validation</span>
+                </div>
+
+                <div class="factor-item">
+                  <div class="factor-header">
+                    <span class="factor-name">Literature</span>
+                    <span class="factor-weight">20%</span>
+                  </div>
+                  <div class="factor-bar">
+                    <div class="factor-bar-fill" id="bar-lit" style="width: 85%;"></div>
+                  </div>
+                  <span class="factor-desc">PubMed extraction frequency</span>
+                </div>
+
+                <div class="factor-item">
+                  <div class="factor-header">
+                    <span class="factor-name">Novelty</span>
+                    <span class="factor-weight">20%</span>
+                  </div>
+                  <div class="factor-bar">
+                    <div class="factor-bar-fill" id="bar-nov" style="width: 94%;"></div>
+                  </div>
+                  <span class="factor-desc">Transitive separation from prior art</span>
+                </div>
+              </div>
             </div>
+
             <div class="detail-metric-badge">
-              <span class="detail-metric-val" id="path-metric-val">0.94</span>
-              <span class="detail-metric-lbl">Prioritization Score</span>
+              <span class="detail-metric-val" id="path-metric-val">89</span>
+              <span class="detail-metric-lbl">Signal Score (0–100)</span>
             </div>
           </div>
         </div>
@@ -352,8 +393,7 @@
           <div class="capability-item">
             <div class="capability-icon">[06]</div>
             <h3 class="capability-title">Cross-Platform Flutter Client</h3>
-            <p class="capability-desc">Warm Ivory scientific design system running natively at 60fps across iOS,
-              Android, Windows Desktop, macOS, and Web.</p>
+            <p class="capability-desc">High-performance research client running natively at 60fps across iOS, Android, Windows Desktop, macOS, and Web.</p>
           </div>
         </div>
       </div>
