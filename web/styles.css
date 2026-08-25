@@ -614,19 +614,20 @@ section {
 .pathfinder-detail-box {
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
-  padding: 1.5rem;
+  padding: 1.75rem 2rem;
   border-radius: var(--radius-sm);
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 200px;
   gap: 2rem;
+  align-items: center;
 }
 
 .detail-claim-title {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.15em;
   color: var(--color-amber);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   text-transform: uppercase;
 }
 
@@ -634,36 +635,38 @@ section {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--color-ivory-secondary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 /* 4-Factor Composite Signal Score Breakdown */
 .score-factors-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 0.85rem;
+  width: 100%;
   margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border-subtle);
 }
 
 .factor-item {
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border-subtle);
-  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(247, 245, 238, 0.1);
+  padding: 0.85rem 1rem;
   border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .factor-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.35rem;
+  align-items: baseline;
 }
 
 .factor-name {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
   color: var(--color-ivory);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -671,29 +674,29 @@ section {
 
 .factor-weight {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   color: var(--color-amber);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .factor-bar {
   width: 100%;
-  height: 3px;
-  background: var(--color-bg-surface);
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 0.35rem;
+  margin: 0.2rem 0;
 }
 
 .factor-bar-fill {
   height: 100%;
   background: var(--color-amber);
   border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .factor-desc {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   color: var(--color-ivory-muted);
   line-height: 1.35;
 }
@@ -702,26 +705,29 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   border-left: 1px solid var(--color-border);
-  padding-left: 1.5rem;
+  padding-left: 2rem;
+  height: 100%;
+  text-align: center;
 }
 
 .detail-metric-val {
   font-family: var(--font-mono);
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: var(--color-sage);
   line-height: 1;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .detail-metric-lbl {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--color-ivory-muted);
   text-transform: uppercase;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -1278,6 +1284,12 @@ section {
   }
 }
 
+@media (max-width: 900px) {
+  .score-factors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -1294,5 +1306,11 @@ section {
   
   .modal-dialog {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .score-factors-grid {
+    grid-template-columns: 1fr;
   }
 }
